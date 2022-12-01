@@ -13,3 +13,19 @@ func maxSubArray(nums []int) int {
 	}
 	return max
 }
+
+//50第一个只出现一次的字符
+func firstUniqChar(s string) byte {
+	list := make(map[uint8]int)
+	for i := 0; i < len(s); i++ {
+		list[s[i]]++
+	}
+
+	for i := 0; i < len(s); i++ {
+		count, ok := list[s[i]]
+		if ok && count == 1 {
+			return s[i]
+		}
+	}
+	return ' '
+}
