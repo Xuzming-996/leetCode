@@ -42,6 +42,30 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 	return nil
 }
 
+//53 在排序数组中查找数字(使用二分法查找)
+func Search(nums []int, target int) int {
+	nums = []int{5, 7, 7, 8, 8, 10}
+	left := searchInt(nums, target)
+	if left == len(nums) || nums[left] != target {
+		return 0
+	}
+	right := searchInt(nums, target+1) - 1
+	return right - left + 1
+}
+
+func searchInt(nums []int, target int) int {
+	i, j := 0, len(nums)
+	for i < j {
+		h := (i + j) / 2
+		if nums[h] < target {
+			i = h + 1
+		} else {
+			j = h
+		}
+	}
+	return i
+}
+
 //57 和为s的两个数字（双指针最优解）
 func twoSum(nums []int, target int) []int {
 	left, right := 0, len(nums)-1
