@@ -66,6 +66,40 @@ func searchInt(nums []int, target int) int {
 	return i
 }
 
+//53-2 //0~n-1中缺失的数字（二分法，先从中间起判断是否已经不相等，如果不相等，就往前二分，否则往后）
+func missingNumber(nums []int) int {
+	l, r := -1, len(nums)
+	for l+1 != r {
+		m := (l + r) >> 1
+		if m != nums[m] {
+			r = m
+		} else {
+			l = m
+		}
+	}
+	return l + 1
+}
+
+//54. 二叉搜索树的第K大节点
+func kthLargest(root *TreeNode, k int) int {
+	var dfs func(*TreeNode)
+	var res = -1
+	dfs = func(node *TreeNode) {
+		if node == nil {
+			return
+		}
+		dfs(node.Right)
+		k--
+		if k == 0 {
+			res = node.Val
+			return
+		}
+		dfs(node.Left)
+	}
+	dfs(root)
+	return res
+}
+
 //57 和为s的两个数字（双指针最优解）
 func twoSum(nums []int, target int) []int {
 	left, right := 0, len(nums)-1
