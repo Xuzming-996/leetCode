@@ -100,6 +100,35 @@ func kthLargest(root *TreeNode, k int) int {
 	return res
 }
 
+//55 平衡二叉树
+func isBalanced(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+	return abs(height(root.Left)-height(root.Right)) <= 1 && isBalanced(root.Left) && isBalanced(root.Right)
+}
+
+func height(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	return max1(height(root.Left), height(root.Right)) + 1
+}
+
+func max1(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -1 * x
+	}
+	return x
+}
+
 //57 和为s的两个数字（双指针最优解）
 func twoSum(nums []int, target int) []int {
 	left, right := 0, len(nums)-1
@@ -116,4 +145,30 @@ func twoSum(nums []int, target int) []int {
 	}
 
 	return []int{}
+}
+
+// 57-2 和为S的连续正数序列
+func FindContinuousSequence(target int) [][]int {
+	i, j, sum := 1, 1, 0
+	ret := make([][]int, 0)
+
+	target1 := target >> 1
+	for i <= target1 {
+		if sum < target {
+			sum += j
+			j++
+		} else if sum > target {
+			sum -= i
+			i++
+		} else {
+			tmp := make([]int, 0, j-i)
+			for m := i; m < j; m++ {
+				tmp = append(tmp, m)
+			}
+			ret = append(ret, tmp)
+			sum -= i
+			i++
+		}
+	}
+	return ret
 }
