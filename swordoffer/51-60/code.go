@@ -1,5 +1,9 @@
 package _1_60
 
+import (
+	"strings"
+)
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -171,4 +175,28 @@ func FindContinuousSequence(target int) [][]int {
 		}
 	}
 	return ret
+}
+
+// ReverseWords 58-1 翻转单词顺序
+func ReverseWords(s string) string {
+	s = strings.Trim(s, " ")
+	words := strings.Fields(s)
+	i, j := 0, len(words)-1
+	for i < j {
+		words[i], words[j] = words[j], words[i]
+		i++
+		j--
+	}
+	return strings.Join(words, " ")
+}
+
+// 58-2 左旋转字符串
+func ReverseLeftWords(s string, n int) string {
+	//words := byte(strings.Fields(s))
+	for n > 0 {
+		s = s + string(s[0])
+		s = s[1:]
+		n--
+	}
+	return s
 }

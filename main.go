@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(base.FindContinuousSequence(10))
+	fmt.Println(base.ReverseLeftWords("abcdefg", 2))
 }
