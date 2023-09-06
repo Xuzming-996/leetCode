@@ -1,4 +1,4 @@
-package _90_300
+package easy
 
 import "strings"
 

@@ -1,4 +1,4 @@
-package _90_200
+package easy
 
 //190二进制中1的个数
 func HammingWeight(num uint32) int {

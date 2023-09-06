@@ -1,3 +1,3 @@
-module testProject
+module leetcode
 
 go 1.18

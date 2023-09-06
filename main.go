@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	base "testProject/swordoffer/51-60"
+	"leetcode/easy"
 )
 
 func main() {
-	fmt.Println(base.ReverseLeftWords("abcdefg", 2))
+	fmt.Println(easy.Merge([]int{1, 2, 3, 4}, 4, []int{1, 2, 3, 4}, 4))
 }
